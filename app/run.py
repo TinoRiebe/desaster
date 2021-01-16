@@ -27,12 +27,14 @@ def tokenize(text):
 
 # load data
 
-engine = create_engine('sqlite:///../workspace/data/DisasterResponse.db')
+#engine = create_engine('sqlite:///../workspace/data/DisasterResponse.db')
+database_filepath = 'data/DisasterResponse.db'
+engine = create_engine('sqlite:///%s' % database_filepath)
 # engine = create_engine('sqlite:///{}'.format('data/DisasterResponse.db'))
 df = pd.read_sql_table('Disaster_messages', engine)
 
 # load model
-model = jbl.load("../workspace/models/model.pkl")
+model = jbl.load("../workspace/models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model

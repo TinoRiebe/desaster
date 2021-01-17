@@ -50,7 +50,10 @@ Test your modell on a webpage
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 2. Run the following command in the app's directory to run your web app.
+    
     `python run.py`
+    
+     better you run `python app/run.py` from the working directory
 
 3. Go to http://0.0.0.0:3001/
 

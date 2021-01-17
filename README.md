@@ -53,7 +53,7 @@ Test your modell on a webpage
     
     `python run.py`
     
-     better you run `python app/run.py` from the working directory
+     better you run `python app/run.py` from the root directory
 
 3. Go to http://0.0.0.0:3001/
 

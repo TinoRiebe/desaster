@@ -26,11 +26,11 @@ def tokenize(text):
     return clean_tokens
 
 # load data
+# engine = create_engine('sqlite:///{}'.format('data/DisasterResponse.db')) doesn't work
+# engine = create_engine('sqlite:///../workspace/data/DisasterResponse.db') doesn't work
 
-#engine = create_engine('sqlite:///../workspace/data/DisasterResponse.db')
 database_filepath = 'data/DisasterResponse.db'
 engine = create_engine('sqlite:///%s' % database_filepath)
-# engine = create_engine('sqlite:///{}'.format('data/DisasterResponse.db'))
 df = pd.read_sql_table('Disaster_messages', engine)
 
 # load model

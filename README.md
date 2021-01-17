@@ -1,5 +1,32 @@
 # Disaster Response Pipeline Project
 
+## Requirements
+Python 3.x
+
+process_data_py:
+- pandas
+- sqlalchemy
+
+train_classifier.py:
+- pandas
+- sqlalchemy
+- re
+- nltk
+- sklearn
+- joblib
+
+run.py:
+- plotly
+- nltk
+- json
+- sqlalchemy
+- joblib
+
+
+
+
+
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 

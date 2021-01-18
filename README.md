@@ -45,7 +45,8 @@ Finally, the trained modell will be saved
 
 Test your modell on a webpage
 
-INSTALLATION
+## INSTALLATION
+
 Clone Repo
 Rerun Scripts
 Run the following commands in the project's root directory to set up your database and model.
@@ -53,42 +54,18 @@ Run the following commands in the project's root directory to set up your databa
 To run ETL pipeline that cleans data and stores in database
 
 python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+
 To run ML pipeline that trains classifier and saves
 
 python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
-Run the following command in the app's directory to run your web app. `python3 app/run.py
+
+Run the following command in the app's directory to run your web app. 
+
+python3 app/run.py
 
 Go to http://0.0.0.0:3001/
 
-RESULTS
-Results are as follows:
 
-The weighted avg precision and F1 score obtained from a test run using SGDClassifier are 0.75 and 0.61 respectively
-The weighted avg precision and F1 score obtained from a test run using RandomForestClassifier 0.75 and 0.57 respectively
-The weighted avg precision and F1 score obtained from a test run using GradientBoostingClassifier 0.70 and 0.60 respectively
-
-
-### Instructions:
-1. Run the following commands in the project's root directory to set up your database and model.
-
-    - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
-
-2. Run the following command in the app's directory to run your web app.
-    
-    `python run.py`
-    
-     better you run `python app/run.py` from the root directory
-
-3. Go to http://0.0.0.0:3001/
-
-
-
-python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
-
-python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
 
 new terminal 
 env|grep WORK

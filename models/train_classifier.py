@@ -110,8 +110,8 @@ def build_basic_pipelines():
               7:'MultinominalNB', 8:'SVC'}
     
     output='Available Classifier\n\n1 - RandomForest\n2 - KNeighbors\n\
-    3 - GradientBososting\n4 - DecisionTree\n5 - AdaBoost\n6 - SGD\n\
-    7 - MultinominalGB\n8 - SVC'
+3 - GradientBososting\n4 - DecisionTree\n5 - AdaBoost\n6 - SGD\n\
+7 - MultinominalGB\n8 - SVC'
    
     
     

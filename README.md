@@ -1,8 +1,13 @@
 # Disaster Response Pipeline Project
-Overview: vlablavlub
+The three major aspects of this project is as follows:
+
+ETL Pipeline - Clean,Transform and load data to Sqlite database
+ML Pipeline - Build ML Pipeline
+Flask web-app displaying analysis from data
+A web app is created with Flask and Bootstrap for Natural Language Processing (NLP). The app provides an interface for new messages, (e.g. Twitter messages scanned by disaster relief agencies in a Disaster Response situation). Whenever you type a message it is classified into 37 Categories based on the learnings from the trained dataset
 
 ## Requirements
-Python 3.x
+see requirement.txt
 
 process_data_py:
 - pandas
@@ -23,6 +28,33 @@ run.py:
 - sqlalchemy
 - joblib
 
+## File Structure
+
+data folder contains the following:
+
+disaster_categories.csv: contains the disaster categories csv file
+disaster_messages.csv: contains the disaster messages csv file
+DisasterResponse.db: contains the DisasterResponse db which is a merge of messages and categories by ID
+proccess_data.py: contains the scripts to run etl pipeline for cleaning data
+Jupyter Notebooks folder contains the following:
+
+ETL Pipeline Preparation.ipynb: contains the code developement process to create ETL Pipeline
+ML Pipeline Preparation.ipynb: contains the code developement process to create ML Pipeline
+DisasterResponse.db: contains the DisasterResponse db which is a merge of messages and categories by ID
+ML model folder contains the following:
+
+ml_pipeline.py: contains scripts that create ml pipeline
+disaster_resonse.pkl: contains the Classifier pickle fit file
+train_classifier.py: script to train_classifier.py
+app folder contains the following:
+
+templates: Folder containing
+index.html: Renders homepage
+go.html: Renders the message classifier
+run.py: Defines the app routes
+img folder contains snapshots taken from web app:
+
+
 ## Description:
 ### process_data.py:
 
@@ -38,7 +70,27 @@ Finally, the trained modell will be saved
 
 Test your modell on a webpage
 
+INSTALLATION
+Clone Repo
+Rerun Scripts
+Run the following commands in the project's root directory to set up your database and model.
 
+To run ETL pipeline that cleans data and stores in database
+
+python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+To run ML pipeline that trains classifier and saves
+
+python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
+Run the following command in the app's directory to run your web app. `python3 app/run.py
+
+Go to http://0.0.0.0:3001/
+
+RESULTS
+Results are as follows:
+
+The weighted avg precision and F1 score obtained from a test run using SGDClassifier are 0.75 and 0.61 respectively
+The weighted avg precision and F1 score obtained from a test run using RandomForestClassifier 0.75 and 0.57 respectively
+The weighted avg precision and F1 score obtained from a test run using GradientBoostingClassifier 0.70 and 0.60 respectively
 
 
 ### Instructions:

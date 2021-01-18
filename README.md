@@ -4,43 +4,21 @@ The three major aspects of this project is as follows:
 ETL Pipeline - Clean,Transform and load data to Sqlite database
 ML Pipeline - Build ML Pipeline
 Flask web-app displaying analysis from data
+
 A web app is created with Flask and Bootstrap for Natural Language Processing (NLP). The app provides an interface for new messages, (e.g. Twitter messages scanned by disaster relief agencies in a Disaster Response situation). Whenever you type a message it is classified into 37 Categories based on the learnings from the trained dataset
 
 ## Requirements
 see requirement.txt
 
-process_data_py:
-- pandas
-- sqlalchemy
-
-train_classifier.py:
-- pandas
-- sqlalchemy
-- re
-- nltk
-- sklearn
-- joblib
-
-run.py:
-- plotly
-- nltk
-- json
-- sqlalchemy
-- joblib
-
 ## File Structure
+data folder:
 
-data folder contains the following:
+disaster_categories.csv
+disaster_messages.csv
+DisasterResponse.db: the merge of cleaned messages and categories
 
-disaster_categories.csv: contains the disaster categories csv file
-disaster_messages.csv: contains the disaster messages csv file
-DisasterResponse.db: contains the DisasterResponse db which is a merge of messages and categories by ID
-proccess_data.py: contains the scripts to run etl pipeline for cleaning data
-Jupyter Notebooks folder contains the following:
+proccess_data.py: contains the scripts to run etl pipeline for cleaning and saving the data
 
-ETL Pipeline Preparation.ipynb: contains the code developement process to create ETL Pipeline
-ML Pipeline Preparation.ipynb: contains the code developement process to create ML Pipeline
-DisasterResponse.db: contains the DisasterResponse db which is a merge of messages and categories by ID
 ML model folder contains the following:
 
 ml_pipeline.py: contains scripts that create ml pipeline

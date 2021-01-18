@@ -2,7 +2,9 @@
 The three major aspects of this project is as follows:
 
 ETL Pipeline - Clean,Transform and load data to Sqlite database
+
 ML Pipeline - Build ML Pipeline
+
 Flask web-app displaying analysis from data
 
 A web app is created with Flask and Bootstrap for Natural Language Processing (NLP). The app provides an interface for new messages, (e.g. Twitter messages scanned by disaster relief agencies in a Disaster Response situation). Whenever you type a message it is classified into 37 Categories based on the learnings from the trained dataset
@@ -20,8 +22,8 @@ data folder:
 
 model folder:
 
-disaster_resonse.pkl: contains the Classifier pickle file
-train_classifier.py: script to train_classifier.py
+    disaster_resonse.pkl: contains the Classifier pickle file
+    train_classifier.py: script to train_classifier.py
 
 app folder contains the following:
 
@@ -48,7 +50,6 @@ Test your modell on a webpage
 ## INSTALLATION
 
 Clone Repo
-Rerun Scripts
 Run the following commands in the project's root directory to set up your database and model.
 
 To run ETL pipeline that cleans data and stores in database
@@ -64,9 +65,3 @@ Run the following command in the app's directory to run your web app.
     python3 app/run.py
 
     Go to http://0.0.0.0:3001/
-
-
-
-new terminal 
-env|grep WORK
-https://SPACEID-3001.SPACEDOMAIN

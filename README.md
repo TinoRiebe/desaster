@@ -39,13 +39,15 @@ app folder contains the following:
 
 ### train_classifier:
 
-    load the database and train the model. You can try a basic classifier without any additional parameters or use the predifined classifier
+load the database and train the model. You can try a basic classifier without any additional parameters or use the predifined classifier
+
     (SGDClassifier(loss='modified_huber', penalty='elasticnet', n_jobs=-1).
-    Finally, the trained modell will be saved
+    
+Finally, the trained modell will be saved
 
 ### run.py:
 
-    Test your modell on a webpage
+Test your modell on a webpage
 
 ## INSTALLATION
 

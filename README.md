@@ -35,7 +35,7 @@ app folder contains the following:
 ## Description:
 ### process_data.py:
 
-    load, merge, clean and save the raw files from csv to sql
+load, merge, clean and save the raw files from csv to sql
 
 ### train_classifier:
 
@@ -52,15 +52,19 @@ Test your modell on a webpage
 ## INSTALLATION
 
 Clone Repo
+
 Run the following commands in the project's root directory to set up your database and model.
+
 
 To run ETL pipeline that cleans data and stores in database
 
     python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 
+
 To run ML pipeline that trains classifier and saves
 
     python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
+
 
 Run the following command in the app's directory to run your web app. 
 

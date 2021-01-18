@@ -10,7 +10,7 @@ Flask web-app displaying analysis from data
 A web app is created with Flask and Bootstrap for Natural Language Processing (NLP). The app provides an interface for new messages, (e.g. Twitter messages scanned by disaster relief agencies in a Disaster Response situation). Whenever you type a message it is classified into 37 Categories based on the learnings from the trained dataset
 
 ## Requirements
-see requirement.txt
+    see requirement.txt
 
 ## File Structure
 data folder:
@@ -35,17 +35,17 @@ app folder contains the following:
 ## Description:
 ### process_data.py:
 
-load, merge, clean and save the raw files from csv to sql
+    load, merge, clean and save the raw files from csv to sql
 
 ### train_classifier:
 
-load the database and train the model. You can try a basic classifier without any additional parameters or use the predifined classifier
-(SGDClassifier(loss='modified_huber', penalty='elasticnet', n_jobs=-1).
-Finally, the trained modell will be saved
+    load the database and train the model. You can try a basic classifier without any additional parameters or use the predifined classifier
+    (SGDClassifier(loss='modified_huber', penalty='elasticnet', n_jobs=-1).
+    Finally, the trained modell will be saved
 
 ### run.py:
 
-Test your modell on a webpage
+    Test your modell on a webpage
 
 ## INSTALLATION
 

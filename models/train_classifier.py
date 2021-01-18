@@ -234,7 +234,7 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                             test_size=0.2,
                                                             random_state=42)
-        print('Choose:\n\nbasic classifer (1)\npredefined classifier(2)?')
+        print('\nChoose:\n\nTrain with a basic classifer (1)\nTrain with the predefined classifier(2)?')
         choice=0
         
         while choice != 1 and choice != 2:

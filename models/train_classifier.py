@@ -43,7 +43,7 @@ from sklearn.svm import SVC
 
 
 import warnings
-warnings.filterwarnings("ignore");
+warnings.filterwarnings("ignore")
 
 # database_filepath = 'e:/github/desaster/data/DisasterResponse.db'
 # model_filepath = 'e:/github/desaster/models'
@@ -89,49 +89,58 @@ def tokenize(text):
     stop_words = stopwords.words("english")
     words = [w for w in tokens if w not in stop_words]
     
-    #Reduce words to its stem/Root form
+    #Reduce words to its stem/Root form, Lemmatize the words
     stemmed = [PorterStemmer().stem(w) for w in words]
-    # Lemmatize verbs
     lemmed = [WordNetLemmatizer().lemmatize(w, pos='v') for w in stemmed]
     
     return lemmed
 
 
-def build_basic_pipelines(clf_name):
+def build_basic_pipelines():
     """
     INPUT
     clf_name - name of a classifier
     
     OUTPUT
-    pipeline - basic pipeline with classifier
+    pipeline - pipeline with the basic classifier
     """
+    clf_choice = 0
+    clf_dict={1:'RandomForest', 2:'KNeighbors',3:'GradientBoosting',
+              4:'DecisionTree', 5:'AdaBoost', 6:'SGD',
+              7:'MultinominalNB', 8:'SVC'}
     
-    clf_dict={'RandomForest':1, 'KNeighbors':2,'GradientBoosting':3,
-              'DecisionTree':4, 'AdaBoost':5, 'SGD':7,
-              'MultinominalNB':8, 'SVC':9}
+    output='Available Classifier\n\n1 - RandomForest\n2 - KNeighbors\n\
+    3 - GradientBososting\n4 - DecisionTree\n5 - AdaBoost\n6 - SGD\n\
+    7 - MultinominalGB\n8 - SVC'
+   
     
-    if clf_name not in clf_dict:
-        print('unsupported classifier, please choose only:\n')
-        for clf in clf_dict.keys():
-            print(clf)
+    
+    while clf_choice < 1 or clf_choice > 8:
+        print(output)
+        try:
+            clf_choice = int(input('Your Choice (1-8) is: '))
+            if clf_choice < 1 or clf_choice > 8:
+                print('wrong input, only 1 - 8\n')
+        except:
+                print('wrong input, only 1 - 8\n')
     else:
-        print(clf_name, '- pipeline will be prepared')
+        print(clf_dict[clf_choice], '- pipeline will be prepared')
     
-    if clf_dict[clf_name]==1:
+    if clf_choice==1:
         clf = RandomForestClassifier()
-    elif clf_dict[clf_name]==2:
+    elif clf_choice==2:
         clf = KNeighborsClassifier()
-    elif clf_dict[clf_name]==3:
+    elif clf_choice==3:
         clf = GradientBoostingClassifier()
-    elif clf_dict[clf_name]==4:
+    elif clf_choice==4:
         clf = DecisionTreeClassifier()
-    elif clf_dict[clf_name]==5:
+    elif clf_choice==5:
         clf = AdaBoostClassifier()
-    elif clf_dict[clf_name]==6:
+    elif clf_choice==6:
         clf = SGDClassifier()
-    elif clf_dict[clf_name]==7:
+    elif clf_choice==7:
         clf = MultinomialNB()
-    elif clf_dict[clf_name]==8:
+    elif clf_choice==8:
         clf = SVC()
     
     pipeline = Pipeline([
@@ -146,22 +155,44 @@ def build_basic_pipelines(clf_name):
 def build_model():
     """
     INPUT
-    None - because we will use the selectd classifier with some parameters
+    None - because we will use the selected classifier with predifined
+           parameters
     
     OUTPUT
-    cv - the pipeline
+    pipeline - pipeline with the adjusted classifier
     """
     # The pipeline has tfidf, dimensionality reduction, and classifier
-    
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(SGDClassifier(loss='modified_huber',
                                                     penalty='elasticnet',
+                                                    alpha = 0.0001,
                                                     n_jobs=-1))),
         ])
 
     return pipeline   
+
+    '''
+    # GridsearchPipeline for modeltraining, already done
+    
+    pipeline = Pipeline([
+        ('vect', CountVectorizer(tokenizer=tokenize)),
+        ('tfidf', TfidfTransformer()),
+        ('SGD', MultiOutputClassifier(SGDClassifier()))
+        ])
+
+    grid = {'vect__ngram_range': [(1, 1), (1, 2)],
+            'SGD__estimator__loss': ['modified_huber'],
+            'SGD__estimator__penalty': ['elasticnet','l2'],
+            'SGD__estimator__alpha': [0.0001, 0.001],
+            'SGD__estimator__n_jobs': [-1]
+            }
+
+    model = GridSearchCV(pipeline2, grid, cv=2)
+    model.fit(X_train, y_train)
+    return model
+    '''
 
 
 def evaluate_model(model, X_test, y_test, categories):
@@ -203,10 +234,25 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                             test_size=0.2,
                                                             random_state=42)
+        print('Choose:\n\nbasic classifer (1)\npredefined classifier(2)?')
+        choice=0
+        
+        while choice != 1 and choice != 2:
+            try:
+                choice = int(input('Your Choice is: '))
+                if choice != 1 and choice != 2:
+                    print('wrong input, only (1) or (2)')
+                    
+            except:
+                print('wrong input, only (1) or (2)')
+        
         
         print('Building model...')
-        model = build_model()
-        
+        if choice ==1:
+            model = build_basic_pipelines()
+        else: 
+            model = build_model()
+            
         print('Training model...')
         model.fit(X_train, y_train)
         
@@ -223,9 +269,6 @@ def main():
               'as the first argument and the filepath of the pickle file to '\
               'save the model to as the second argument. \n\nExample: python '\
               'train_classifier.py ../data/DisasterResponse.db classifier.pkl')
-
-
-
 
 
 if __name__ == '__main__':

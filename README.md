@@ -16,22 +16,19 @@ data folder:
 disaster_categories.csv
 disaster_messages.csv
 DisasterResponse.db: the merge of cleaned messages and categories
-
 proccess_data.py: contains the scripts to run etl pipeline for cleaning and saving the data
 
-ML model folder contains the following:
+model folder:
 
-ml_pipeline.py: contains scripts that create ml pipeline
-disaster_resonse.pkl: contains the Classifier pickle fit file
+disaster_resonse.pkl: contains the Classifier pickle file
 train_classifier.py: script to train_classifier.py
+
 app folder contains the following:
 
-templates: Folder containing
-index.html: Renders homepage
-go.html: Renders the message classifier
+    templates: Folder containing
+    index.html: Renders homepage
+    go.html: Renders the message classifier
 run.py: Defines the app routes
-img folder contains snapshots taken from web app:
-
 
 ## Description:
 ### process_data.py:

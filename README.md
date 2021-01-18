@@ -13,10 +13,10 @@ see requirement.txt
 ## File Structure
 data folder:
 
-disaster_categories.csv
-disaster_messages.csv
-DisasterResponse.db: the merge of cleaned messages and categories
-proccess_data.py: contains the scripts to run etl pipeline for cleaning and saving the data
+    disaster_categories.csv
+    disaster_messages.csv
+    DisasterResponse.db: the merge of cleaned messages and categories
+    proccess_data.py: contains the scripts to run etl pipeline for cleaning and saving the data
 
 model folder:
 
@@ -28,7 +28,7 @@ app folder contains the following:
     templates: Folder containing
     index.html: Renders homepage
     go.html: Renders the message classifier
-run.py: Defines the app routes
+    run.py: Defines the app routes
 
 ## Description:
 ### process_data.py:
@@ -53,17 +53,17 @@ Run the following commands in the project's root directory to set up your databa
 
 To run ETL pipeline that cleans data and stores in database
 
-python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+    python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
 
 To run ML pipeline that trains classifier and saves
 
-python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
+    python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
 
 Run the following command in the app's directory to run your web app. 
 
-python3 app/run.py
+    python3 app/run.py
 
-Go to http://0.0.0.0:3001/
+    Go to http://0.0.0.0:3001/
 
 
 

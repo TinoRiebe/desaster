@@ -63,7 +63,7 @@ To run ETL pipeline that cleans data and stores in database
 
 To run ML pipeline that trains classifier and saves
 
-    python ML model/train_classifier.py data/DisasterResponse.db ML model/disaster_response.pkl
+    python models/train_classifier.py data/DisasterResponse.db models/disaster_response.pkl
 
 
 Run the following command in the app's directory to run your web app. 
